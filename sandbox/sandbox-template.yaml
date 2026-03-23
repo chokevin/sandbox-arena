@@ -1,21 +1,21 @@
 apiVersion: extensions.agents.x-k8s.io/v1alpha1
 kind: SandboxTemplate
 metadata:
-  name: poke-battle-sandbox
+  name: arena-sandbox
   namespace: default
 spec:
   podTemplate:
     spec:
       containers:
-      - name: battle-runtime
-        image: mcr.microsoft.com/aks/poke-sandbox/battle-runtime:latest
+      - name: eval-runtime
+        image: us-central1-docker.pkg.dev/k8s-staging-images/agent-sandbox/python-runtime-sandbox:latest-main
         ports:
         - containerPort: 8888
         readinessProbe:
           httpGet:
             path: "/"
             port: 8888
-          initialDelaySeconds: 2
+          initialDelaySeconds: 0
           periodSeconds: 1
         resources:
           requests:
