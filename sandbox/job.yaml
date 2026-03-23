@@ -1,0 +1,70 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sandbox-arena-training
+spec:
+  backoffLimit: 2
+  template:
+    metadata:
+      labels:
+        app: sandbox-arena-training
+    spec:
+      serviceAccountName: sandbox-arena-sa
+      containers:
+      - name: trainer
+        image: ${TRAINING_IMAGE}
+        args:
+        - "train.py"
+        - "--arena"
+        - "trading"
+        - "--generations"
+        - "20"
+        - "--population"
+        - "20"
+        - "--parallel"
+        - "10"
+        - "--mode"
+        - "cluster"
+        - "--template"
+        - "arena-sandbox"
+        resources:
+          requests:
+            cpu: "500m"
+            memory: "512Mi"
+          limits:
+            cpu: "1"
+            memory: "1Gi"
+      restartPolicy: Never
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: sandbox-arena-sa
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: sandbox-arena-role
+rules:
+- apiGroups: ["agents.x-k8s.io"]
+  resources: ["sandboxes"]
+  verbs: ["get", "list", "watch", "create", "delete"]
+- apiGroups: ["extensions.agents.x-k8s.io"]
+  resources: ["sandboxclaims", "sandboxtemplates", "sandboxwarmpools"]
+  verbs: ["get", "list", "watch", "create", "delete"]
+- apiGroups: [""]
+  resources: ["pods", "services", "pods/portforward"]
+  verbs: ["get", "list", "watch", "create", "delete"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: sandbox-arena-binding
+subjects:
+- kind: ServiceAccount
+  name: sandbox-arena-sa
+  namespace: default
+roleRef:
+  kind: ClusterRole
+  name: sandbox-arena-role
+  apiGroup: rbac.authorization.k8s.io
