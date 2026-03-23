@@ -1,0 +1,366 @@
+{
+  "elapsed": 1.042726993560791,
+  "total_evals": 45,
+  "results": [
+    {
+      "agent": "momentum",
+      "arena": "trading",
+      "scenario": "AAPL",
+      "score": 14.26,
+      "passed": true,
+      "error": ""
+    },
+    {
+      "agent": "malicious",
+      "arena": "trading",
+      "scenario": "AAPL",
+      "score": 0.0,
+      "passed": false,
+      "error": ""
+    },
+    {
+      "agent": "bollinger",
+      "arena": "trading",
+      "scenario": "AAPL",
+      "score": 0.0,
+      "passed": false,
+      "error": ""
+    },
+    {
+      "agent": "bollinger",
+      "arena": "trading",
+      "scenario": "MSFT",
+      "score": 0.0,
+      "passed": false,
+      "error": ""
+    },
+    {
+      "agent": "blackjack_basic",
+      "arena": "trading",
+      "scenario": "MSFT",
+      "score": 0.0,
+      "passed": false,
+      "error": ""
+    },
+    {
+      "agent": "blackjack_basic",
+      "arena": "trading",
+      "scenario": "AAPL",
+      "score": 0.0,
+      "passed": false,
+      "error": ""
+    },
+    {
+      "agent": "contrarian",
+      "arena": "trading",
+      "scenario": "AAPL",
+      "score": 0.0,
+      "passed": false,
+      "error": ""
+    },
+    {
+      "agent": "mean_reversion",
+      "arena": "trading",
+      "scenario": "AAPL",
+      "score": 0.0,
+      "passed": false,
+      "error": ""
+    },
+    {
+      "agent": "buy_and_hold",
+      "arena": "trading",
+      "scenario": "MSFT",
+      "score": 17.5,
+      "passed": true,
+      "error": ""
+    },
+    {
+      "agent": "buy_and_hold",
+      "arena": "trading",
+      "scenario": "AAPL",
+      "score": 21.78,
+      "passed": true,
+      "error": ""
+    },
+    {
+      "agent": "malicious",
+      "arena": "trading",
+      "scenario": "MSFT",
+      "score": 0.0,
+      "passed": false,
+      "error": ""
+    },
+    {
+      "agent": "contrarian",
+      "arena": "trading",
+      "scenario": "MSFT",
+      "score": 0.0,
+      "passed": false,
+      "error": ""
+    },
+    {
+      "agent": "momentum",
+      "arena": "trading",
+      "scenario": "MSFT",
+      "score": 11.55,
+      "passed": true,
+      "error": ""
+    },
+    {
+      "agent": "mean_reversion",
+      "arena": "trading",
+      "scenario": "MSFT",
+      "score": 0.0,
+      "passed": false,
+      "error": ""
+    },
+    {
+      "agent": "blackjack_basic",
+      "arena": "trading",
+      "scenario": "GOOGL",
+      "score": 0.0,
+      "passed": false,
+      "error": ""
+    },
+    {
+      "agent": "bollinger",
+      "arena": "trading",
+      "scenario": "GOOGL",
+      "score": 0.0,
+      "passed": false,
+      "error": ""
+    },
+    {
+      "agent": "malicious",
+      "arena": "trading",
+      "scenario": "GOOGL",
+      "score": 0.0,
+      "passed": false,
+      "error": ""
+    },
+    {
+      "agent": "buy_and_hold",
+      "arena": "trading",
+      "scenario": "GOOGL",
+      "score": 22.72,
+      "passed": true,
+      "error": ""
+    },
+    {
+      "agent": "mean_reversion",
+      "arena": "trading",
+      "scenario": "GOOGL",
+      "score": 0.0,
+      "passed": false,
+      "error": ""
+    },
+    {
+      "agent": "contrarian",
+      "arena": "trading",
+      "scenario": "GOOGL",
+      "score": 0.0,
+      "passed": false,
+      "error": ""
+    },
+    {
+      "agent": "momentum",
+      "arena": "trading",
+      "scenario": "GOOGL",
+      "score": 20.01,
+      "passed": true,
+      "error": ""
+    },
+    {
+      "agent": "blackjack_basic",
+      "arena": "trading",
+      "scenario": "AMZN",
+      "score": 0.0,
+      "passed": false,
+      "error": ""
+    },
+    {
+      "agent": "buy_and_hold",
+      "arena": "trading",
+      "scenario": "AMZN",
+      "score": 11.0,
+      "passed": true,
+      "error": ""
+    },
+    {
+      "agent": "bollinger",
+      "arena": "trading",
+      "scenario": "AMZN",
+      "score": 0.0,
+      "passed": false,
+      "error": ""
+    },
+    {
+      "agent": "contrarian",
+      "arena": "trading",
+      "scenario": "AMZN",
+      "score": 4.32,
+      "passed": true,
+      "error": ""
+    },
+    {
+      "agent": "malicious",
+      "arena": "trading",
+      "scenario": "AMZN",
+      "score": 0.0,
+      "passed": false,
+      "error": ""
+    },
+    {
+      "agent": "mean_reversion",
+      "arena": "trading",
+      "scenario": "AMZN",
+      "score": 5.5,
+      "passed": true,
+      "error": ""
+    },
+    {
+      "agent": "momentum",
+      "arena": "trading",
+      "scenario": "AMZN",
+      "score": 7.41,
+      "passed": true,
+      "error": ""
+    },
+    {
+      "agent": "blackjack_basic",
+      "arena": "trading",
+      "scenario": "TSLA",
+      "score": 0.0,
+      "passed": false,
+      "error": ""
+    },
+    {
+      "agent": "bollinger",
+      "arena": "trading",
+      "scenario": "TSLA",
+      "score": 0.0,
+      "passed": false,
+      "error": ""
+    },
+    {
+      "agent": "buy_and_hold",
+      "arena": "trading",
+      "scenario": "TSLA",
+      "score": 28.0,
+      "passed": true,
+      "error": ""
+    },
+    {
+      "agent": "contrarian",
+      "arena": "trading",
+      "scenario": "TSLA",
+      "score": 0.0,
+      "passed": false,
+      "error": ""
+    },
+    {
+      "agent": "malicious",
+      "arena": "trading",
+      "scenario": "TSLA",
+      "score": 0.0,
+      "passed": false,
+      "error": ""
+    },
+    {
+      "agent": "mean_reversion",
+      "arena": "trading",
+      "scenario": "TSLA",
+      "score": 9.5,
+      "passed": true,
+      "error": ""
+    },
+    {
+      "agent": "momentum",
+      "arena": "trading",
+      "scenario": "TSLA",
+      "score": 8.95,
+      "passed": true,
+      "error": ""
+    },
+    {
+      "agent": "blackjack_basic",
+      "arena": "blackjack",
+      "scenario": "42",
+      "score": 46.0,
+      "passed": false,
+      "error": ""
+    },
+    {
+      "agent": "blackjack_basic",
+      "arena": "blackjack",
+      "scenario": "456",
+      "score": 47.0,
+      "passed": true,
+      "error": ""
+    },
+    {
+      "agent": "blackjack_basic",
+      "arena": "blackjack",
+      "scenario": "123",
+      "score": 45.0,
+      "passed": false,
+      "error": ""
+    },
+    {
+      "agent": "blackjack_basic",
+      "arena": "blackjack",
+      "scenario": "789",
+      "score": 51.0,
+      "passed": true,
+      "error": ""
+    },
+    {
+      "agent": "blackjack_basic",
+      "arena": "blackjack",
+      "scenario": "1337",
+      "score": 44.0,
+      "passed": false,
+      "error": ""
+    },
+    {
+      "agent": "survival_balanced",
+      "arena": "survival",
+      "scenario": "42",
+      "score": 100.0,
+      "passed": true,
+      "error": ""
+    },
+    {
+      "agent": "survival_balanced",
+      "arena": "survival",
+      "scenario": "99",
+      "score": 100.0,
+      "passed": true,
+      "error": ""
+    },
+    {
+      "agent": "survival_balanced",
+      "arena": "survival",
+      "scenario": "7",
+      "score": 100.0,
+      "passed": true,
+      "error": ""
+    },
+    {
+      "agent": "survival_balanced",
+      "arena": "survival",
+      "scenario": "1000",
+      "score": 100.0,
+      "passed": true,
+      "error": ""
+    },
+    {
+      "agent": "survival_balanced",
+      "arena": "survival",
+      "scenario": "256",
+      "score": 100.0,
+      "passed": true,
+      "error": ""
+    }
+  ]
+}
