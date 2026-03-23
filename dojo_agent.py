@@ -50,7 +50,7 @@ def strip_fences(code: str) -> str:
     return code
 
 
-def run_dojo_session(client, model: str, dojo: Dojo, scenario_index: int):
+def run_dojo_session(client, model: str, dojo: Dojo, scenario_index: int, trajectory=None):
     """Run one multi-turn dojo session."""
     challenge = dojo.reset(scenario_index)
     label = dojo.current_scenario.get("id") or dojo.current_scenario.get("ticker") or f"#{scenario_index}"
@@ -65,6 +65,12 @@ def run_dojo_session(client, model: str, dojo: Dojo, scenario_index: int):
         {"role": "system", "content": SYSTEM_PROMPT},
         {"role": "user", "content": f"Solve this challenge:\n\n{challenge}"},
     ]
+
+    # Record trajectory
+    if trajectory:
+        from collector import Turn
+        trajectory.turns.append(Turn(role="system", content=SYSTEM_PROMPT))
+        trajectory.turns.append(Turn(role="user", content=f"Solve this challenge:\n\n{challenge}"))
 
     for attempt in range(1, dojo.max_steps + 1):
         # Ask LLM for code
@@ -82,19 +88,28 @@ def run_dojo_session(client, model: str, dojo: Dojo, scenario_index: int):
         icon = "✅" if result.info["passed"] else "❌"
         print(f"  {icon} Score: {result.score} | {result.observation.split(chr(10))[0]}")
 
+        # Record trajectory
+        if trajectory:
+            trajectory.turns.append(Turn(role="assistant", content=code))
+            trajectory.attempts = attempt
+            trajectory.best_score = result.info["best_score"]
+
         if result.done:
             if result.info["passed"]:
                 print(f"  🎉 Solved in {attempt} attempt(s)!")
+                if trajectory:
+                    trajectory.solved = True
             else:
                 print(f"  ⛔ Not solved after {attempt} attempts. Best: {result.info['best_score']}")
             return result
 
         # Feed result back to LLM for next attempt
+        feedback = f"Your solution scored {result.score}. Here's the feedback:\n\n{result.observation}\n\nPlease fix and resubmit."
         messages.append({"role": "assistant", "content": code})
-        messages.append({
-            "role": "user",
-            "content": f"Your solution scored {result.score}. Here's the feedback:\n\n{result.observation}\n\nPlease fix and resubmit."
-        })
+        messages.append({"role": "user", "content": feedback})
+
+        if trajectory:
+            trajectory.turns.append(Turn(role="user", content=feedback))
 
     return result
 
@@ -134,11 +149,26 @@ def main():
     start = time.time()
     results = []
 
+    # Trajectory collection
+    from collector import TrajectoryCollector
+    collector = TrajectoryCollector()
+
     for idx in indices:
-        result = run_dojo_session(client, model, dojo, idx)
+        scenario = scenarios[idx % len(scenarios)]
+        scenario_id = scenario.get("id") or scenario.get("ticker") or str(idx)
+        traj = collector.new_trajectory(arena=args.arena, scenario_id=scenario_id)
+        traj_start = time.time()
+
+        result = run_dojo_session(client, model, dojo, idx, trajectory=traj)
+        traj.total_time = time.time() - traj_start
         results.append(result)
 
     elapsed = time.time() - start
+
+    # Save trajectories
+    traj_path = collector.save()
+    sft_path, sft_count = collector.save_sft_dataset()
+    dpo_path, dpo_count = collector.save_dpo_dataset()
 
     # Summary
     solved = sum(1 for r in results if r.info["passed"])
@@ -150,6 +180,13 @@ def main():
     print(f"  Avg Best Score: {avg_score:.1f}")
     total_steps = sum(r.info["step"] for r in results)
     print(f"  Total Attempts: {total_steps}")
+
+    summary = collector.summary()
+    print(f"\n  Training Data:")
+    print(f"    Trajectories: {traj_path}")
+    print(f"    SFT examples: {sft_count} ({sft_path})")
+    print(f"    DPO pairs:    {dpo_count} ({dpo_path})")
+    print(f"    Total turns:  {summary['total_turns']}")
 
 
 if __name__ == "__main__":

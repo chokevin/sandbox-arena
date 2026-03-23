@@ -7,3 +7,4 @@ dist/
 build/
 .env
 arenas/trading/data/*.csv
+trajectories/*.jsonl
