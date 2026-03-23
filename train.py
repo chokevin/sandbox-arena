@@ -40,6 +40,9 @@ def load_arena(arena_name: str):
     elif arena_name == "coding":
         from arenas.coding.arena import CodingArena
         return CodingArena()
+    elif arena_name == "coding_hard":
+        from arenas.coding_hard.arena import HardCodingArena
+        return HardCodingArena()
     elif arena_name == "blackjack":
         from arenas.blackjack.arena import BlackjackArena
         return BlackjackArena()

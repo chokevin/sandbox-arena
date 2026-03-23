@@ -61,6 +61,9 @@ class Dojo:
         elif name == "coding":
             from arenas.coding.arena import CodingArena
             return CodingArena()
+        elif name == "coding_hard":
+            from arenas.coding_hard.arena import HardCodingArena
+            return HardCodingArena()
         elif name == "blackjack":
             from arenas.blackjack.arena import BlackjackArena
             return BlackjackArena()
