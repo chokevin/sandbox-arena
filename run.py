@@ -27,9 +27,15 @@ def load_arena(arena_name: str):
     elif arena_name == "coding":
         from arenas.coding.arena import CodingArena
         return CodingArena()
+    elif arena_name == "blackjack":
+        from arenas.blackjack.arena import BlackjackArena
+        return BlackjackArena()
+    elif arena_name == "survival":
+        from arenas.survival.arena import SurvivalArena
+        return SurvivalArena()
     else:
         print(f"Unknown arena: {arena_name}")
-        print("Available: trading, coding")
+        print("Available: trading, coding, blackjack, survival")
         sys.exit(1)
 
 
