@@ -1,0 +1,58 @@
+{
+  "episodes": 3000,
+  "history": [
+    {
+      "episode": 10,
+      "avg_return": -2.98,
+      "avg_sharpe": -0.5,
+      "avg_drawdown": 6.19,
+      "std_return": 5.03
+    },
+    {
+      "episode": 500,
+      "avg_return": -3.85,
+      "avg_sharpe": -0.566,
+      "avg_drawdown": 6.82,
+      "std_return": 5.23
+    },
+    {
+      "episode": 1000,
+      "avg_return": -2.27,
+      "avg_sharpe": -0.323,
+      "avg_drawdown": 5.52,
+      "std_return": 5.44
+    },
+    {
+      "episode": 1500,
+      "avg_return": -2.19,
+      "avg_sharpe": -0.319,
+      "avg_drawdown": 5.88,
+      "std_return": 5.8
+    },
+    {
+      "episode": 2000,
+      "avg_return": 0.44,
+      "avg_sharpe": 0.075,
+      "avg_drawdown": 4.4,
+      "std_return": 6.35
+    },
+    {
+      "episode": 2500,
+      "avg_return": -4.51,
+      "avg_sharpe": -0.694,
+      "avg_drawdown": 7.33,
+      "std_return": 4.82
+    },
+    {
+      "episode": 3000,
+      "avg_return": -1.5,
+      "avg_sharpe": -0.245,
+      "avg_drawdown": 6.05,
+      "std_return": 7.45
+    }
+  ],
+  "final_avg_return": -0.01,
+  "final_avg_sharpe": -0.01,
+  "baseline_avg_return": 1.98,
+  "alpha": -1.99
+}
