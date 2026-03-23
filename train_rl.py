@@ -103,7 +103,7 @@ def collect_episode(env, policy) -> dict:
 
 def main():
     parser = argparse.ArgumentParser(description="Train RL policy on gym environments")
-    parser.add_argument("--env", default="trading", choices=["trading", "blackjack"])
+    parser.add_argument("--env", default="trading", choices=["trading", "blackjack", "snake", "gridworld"])
     parser.add_argument("--episodes", type=int, default=1000, help="Total training episodes")
     parser.add_argument("--batch", type=int, default=20, help="Episodes per update")
     parser.add_argument("--lr", type=float, default=0.01, help="Learning rate")
@@ -115,10 +115,18 @@ def main():
         from gym_env import TradingGymEnv
         env = TradingGymEnv()
         eval_env = TradingGymEnv()
-    else:
+    elif args.env == "blackjack":
         from gym_env import BlackjackGymEnv
         env = BlackjackGymEnv()
         eval_env = BlackjackGymEnv(seed=999)
+    elif args.env == "snake":
+        from arenas.snake.gym_env import SnakeEnv
+        env = SnakeEnv(grid_size=8)
+        eval_env = SnakeEnv(grid_size=8)
+    elif args.env == "gridworld":
+        from arenas.gridworld.gym_env import GridWorldEnv
+        env = GridWorldEnv(maze_name="simple")
+        eval_env = GridWorldEnv(maze_name="simple")
 
     obs_dim = env.observation_space.shape[0]
     act_dim = env.action_space.n
