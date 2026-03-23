@@ -1,0 +1,2 @@
+poke-env>=0.8.0
+asyncio-extra>=1.0.0
