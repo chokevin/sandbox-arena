@@ -10,3 +10,5 @@ arenas/trading/data/*.csv
 trajectories/*.jsonl
 trajectories/benchmark_history.jsonl
 trajectories/tournament_*.json
+agents/*.npz
+trajectories/rl_training_*.json
