@@ -13,3 +13,5 @@ trajectories/tournament_*.json
 agents/*.npz
 trajectories/rl_training_*.json
 results/
+agents/*.pt
+trajectories/transformer_*.json
