@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68.0", "setuptools-scm>=8.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sandbox-arena"
+version = "0.1.0"
+description = "Run Gym environments in isolated Kubernetes sandbox pods for RL training at scale"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [
+    {name = "Kevin Cho"},
+]
+dependencies = [
+    "numpy>=1.24.0",
+]
+
+[project.optional-dependencies]
+cluster = ["k8s-agent-sandbox"]
+all = [
+    "k8s-agent-sandbox",
+    "gymnasium>=0.29.0",
+    "openai>=1.0.0",
+    "matplotlib>=3.7.0",
+    "torch>=2.0.0",
+    "yfinance>=0.2.0",
+    "pandas>=2.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/chokevin/sandbox-arena"
+
+[tool.setuptools.packages.find]
+include = ["sandbox_arena*"]
