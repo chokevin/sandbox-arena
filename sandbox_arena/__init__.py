@@ -12,5 +12,6 @@ Usage:
 
 from sandbox_arena.env import SandboxEnv
 from sandbox_arena.batch import batch_rollout
+from sandbox_arena.export import collect_and_export, trajectories_to_npz
 
-__all__ = ["SandboxEnv", "batch_rollout"]
+__all__ = ["SandboxEnv", "batch_rollout", "collect_and_export", "trajectories_to_npz"]
