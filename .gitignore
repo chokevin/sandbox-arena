@@ -15,3 +15,4 @@ trajectories/rl_training_*.json
 results/
 agents/*.pt
 trajectories/transformer_*.json
+data/*.csv
